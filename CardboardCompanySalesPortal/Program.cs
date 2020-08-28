@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CardboardCompanySalesPortal
 {
@@ -6,9 +7,13 @@ namespace CardboardCompanySalesPortal
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Cardboard Company Sales Portal!");
+            Console.WriteLine("Welcome to the Cardboard Company Sales Portal!");
 
-            Console.WriteLine("Welcome to Dufflin/Munder Cardboard Co. Sales Portal!");
+
+            List<string> SalesEmployees = new List<string> { "Dwight Hyte", "Tim Halbert", "Phyllis Leaf" };
+
+
+            SalesEmployees.Add("Todd");
 
 
             var selectedMenuOption = "";
@@ -26,13 +31,42 @@ namespace CardboardCompanySalesPortal
 
 
                 selectedMenuOption = Console.ReadLine();
-
+                
 
                 switch (selectedMenuOption)
                 {
                     case "1":
-                        Console.WriteLine("\nYou picked Option 1 \n");
+
+
+                        Console.WriteLine("\nWhich sales employee are you? \n");
+
+
+                        var whatIndexPosition = 0;
+
+
+                        foreach (var salesEmployee in SalesEmployees)
+                        {
+                            whatIndexPosition++;
+
+                            Console.WriteLine($"{whatIndexPosition}: {salesEmployee}");
+                        }
+
+
+                        var indexNumberOfSalesEmployeeChoice = int.Parse(Console.ReadLine()) -1;
+
+
+                        var selectedSalesEmployee = SalesEmployees[indexNumberOfSalesEmployeeChoice];
+
+
+                        Console.WriteLine($"Hello, {selectedSalesEmployee}. Let's continue entering a new sale.");
+
+                        // how to handle if the don't pick a valid option (index position) another do/while?
+
                         break;
+
+
+
+
 
                     case "2":
                         Console.WriteLine("\nYou picked Option 2 \n");
