@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Threading;
 
 namespace CardboardCompanySalesPortal
 {
@@ -37,31 +39,52 @@ namespace CardboardCompanySalesPortal
                 {
                     case "1":
 
-
                         Console.WriteLine("\nWhich sales employee are you? \n");
 
 
-                        var whatIndexPosition = 0;
+                        var selectedSalesEmployee = "";
 
 
-                        foreach (var salesEmployee in SalesEmployees)
+                        while (selectedSalesEmployee.Length == 0)
                         {
-                            whatIndexPosition++;
 
-                            Console.WriteLine($"{whatIndexPosition}: {salesEmployee}");
+                            var whatIndexPosition = 0; // start counter
+
+                            foreach (var salesEmployee in SalesEmployees)
+                            {
+                                whatIndexPosition++;
+
+                                Console.WriteLine($"{whatIndexPosition}: {salesEmployee}");
+                            }
+
+
+                            whatIndexPosition = 0; // reset counter
+
+
+                            var userInputForChosenEmployee = Console.ReadLine();
+
+
+                            Console.WriteLine("\n");
+
+
+                            var chosenEmployeeNumberFromMenu = 0;
+
+
+                            var canConvert = int.TryParse(userInputForChosenEmployee, out chosenEmployeeNumberFromMenu); // returns bool
+
+
+                            if (canConvert == true && chosenEmployeeNumberFromMenu <= SalesEmployees.Count && chosenEmployeeNumberFromMenu != 0)
+                            {
+
+                                selectedSalesEmployee = SalesEmployees[chosenEmployeeNumberFromMenu - 1]; // finds string name by index location inside SalesEmployee List
+
+                                Console.WriteLine($"You picked {selectedSalesEmployee}.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please enter a valid number from the list. \n");
+                            }
                         }
-
-
-                        var indexNumberOfSalesEmployeeChoice = int.Parse(Console.ReadLine()) -1;
-
-
-                        var selectedSalesEmployee = SalesEmployees[indexNumberOfSalesEmployeeChoice];
-
-
-                        Console.WriteLine($"Hello, {selectedSalesEmployee}. Let's continue entering a new sale.");
-
-                        // how to handle if the don't pick a valid option (index position) another do/while?
-
                         break;
 
 
