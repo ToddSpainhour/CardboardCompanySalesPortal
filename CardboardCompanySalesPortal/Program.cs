@@ -42,46 +42,49 @@ namespace CardboardCompanySalesPortal
                         Console.WriteLine("\nWhich sales employee are you? \n");
 
 
-                        var whatIndexPosition = 0;
-
-
-                        foreach (var salesEmployee in SalesEmployees) 
-                        {
-                            whatIndexPosition++;
-
-                            Console.WriteLine($"{whatIndexPosition}: {salesEmployee}");
-                        }
-
-
-                        var userInputForChosenEmployee = Console.ReadLine();
-
-
-                        var chosenEmployeeNumberFromMenu = 0;
-
-
                         var selectedSalesEmployee = "";
 
 
-                        var canConvert = int.TryParse(userInputForChosenEmployee, out chosenEmployeeNumberFromMenu); // returns bool
-
-
-                        if (canConvert == true && chosenEmployeeNumberFromMenu <= SalesEmployees.Count && chosenEmployeeNumberFromMenu != 0)
+                        while (selectedSalesEmployee.Length == 0)
                         {
 
-                            selectedSalesEmployee = SalesEmployees[chosenEmployeeNumberFromMenu - 1]; // finds string name by index location inside SalesEmployee List
+                            var whatIndexPosition = 0; // start counter
 
-                            Console.WriteLine($"You picked {selectedSalesEmployee}.");
+                            foreach (var salesEmployee in SalesEmployees)
+                            {
+                                whatIndexPosition++;
+
+                                Console.WriteLine($"{whatIndexPosition}: {salesEmployee}");
+                            }
+
+
+                            whatIndexPosition = 0; // reset counter
+
+
+                            var userInputForChosenEmployee = Console.ReadLine();
+
+
+                            Console.WriteLine("\n");
+
+
+                            var chosenEmployeeNumberFromMenu = 0;
+
+
+                            var canConvert = int.TryParse(userInputForChosenEmployee, out chosenEmployeeNumberFromMenu); // returns bool
+
+
+                            if (canConvert == true && chosenEmployeeNumberFromMenu <= SalesEmployees.Count && chosenEmployeeNumberFromMenu != 0)
+                            {
+
+                                selectedSalesEmployee = SalesEmployees[chosenEmployeeNumberFromMenu - 1]; // finds string name by index location inside SalesEmployee List
+
+                                Console.WriteLine($"You picked {selectedSalesEmployee}.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please enter a valid number from the list. \n");
+                            }
                         }
-                        else
-                        {
-                            Console.WriteLine("Please enter a valid number");
-                        }
-
-
-                                        
-
-
-
                         break;
 
 
