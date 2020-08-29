@@ -39,14 +39,13 @@ namespace CardboardCompanySalesPortal
                 {
                     case "1":
 
-
                         Console.WriteLine("\nWhich sales employee are you? \n");
 
 
                         var whatIndexPosition = 0;
 
 
-                        foreach (var salesEmployee in SalesEmployees) // prints list of sales employees to choose from
+                        foreach (var salesEmployee in SalesEmployees) 
                         {
                             whatIndexPosition++;
 
@@ -54,58 +53,32 @@ namespace CardboardCompanySalesPortal
                         }
 
 
-                        // var indexNumberOfSaleschosenEmployee = int.Parse(Console.ReadLine()) -1;
+                        var userInputForChosenEmployee = Console.ReadLine();
 
-                        var chosenEmployee = Console.ReadLine(); // should return string
 
-                        var chosenEmployeeNumber = 0;
+                        var chosenEmployeeNumberFromMenu = 0;
 
-                        var canConvert = int.TryParse(chosenEmployee, out chosenEmployeeNumber); // returns bool
 
-                        if (canConvert == true && chosenEmployeeNumber - 1 <= SalesEmployees.Count)
+                        var selectedSalesEmployee = "";
+
+
+                        var canConvert = int.TryParse(userInputForChosenEmployee, out chosenEmployeeNumberFromMenu); // returns bool
+
+
+                        if (canConvert == true && chosenEmployeeNumberFromMenu <= SalesEmployees.Count && chosenEmployeeNumberFromMenu != 0)
                         {
-                            Console.WriteLine("this is inside the canConvert if statement");
-                            Console.WriteLine($"Confirm you picked {SalesEmployees[chosenEmployeeNumber -1]}");
+
+                            selectedSalesEmployee = SalesEmployees[chosenEmployeeNumberFromMenu - 1]; // finds string name by index location inside SalesEmployee List
+
+                            Console.WriteLine($"You picked {selectedSalesEmployee}.");
                         }
                         else
                         {
                             Console.WriteLine("Please enter a valid number");
                         }
 
-                        /*
-                         * string numString = "1287543"; //"1287543.0" will return false for a long
-                            long number1 = 0;
-                            bool canConvert = long.TryParse(numString, out number1);
-                            if (canConvert == true)
-                              Console.WriteLine("number1 now = {0}", number1);
-                            else
-                              Console.WriteLine("numString is not a valid long");
-                        */
 
-
-                        //var selectedSalesEmployee = SalesEmployees[indexNumberOfSaleschosenEmployee];
-
-
-                        Console.WriteLine($"SalesEmployees.Count is: {SalesEmployees.Count}");
-
-                        //Console.WriteLine($"indexNumberOfSaleschosenEmployee is type... {indexNumberOfSaleschosenEmployee.GetType()}"); // int32
-
-
-                     
-
-                        //while the user's response is not one of the not one of the numbered options in the menu
-
-                        //while (indexNumberOfSaleschosenEmployee !<= SalesEmployees.Count) // infinite loop
-                        //{
-                        //    Console.WriteLine("Please enter a number from the list (inside the while loop");
-                        //}
-
-                        //Console.WriteLine($"Now we're outside the do while loop. Hello, {selectedSalesEmployee}. Let's continue entering a new sale.");
-
-                        // how to handle if the don't pick a valid option (index position) another do/while?
-                        // loops through name options in list, and if the entered amount can't be found (find? Contains?) it says to try again. No you're using the numbers to choose
-                        // so if they press anything other than an numbered option (ie. 1, 2, 3, 4) it asks again; use counter? or Count method?
-                        // if there are 9 options, there will be 9 digits to pick from...
+                                        
 
 
 
