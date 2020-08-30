@@ -135,10 +135,10 @@ namespace CardboardCompanySalesPortal
                         Console.WriteLine($"Timeframe: {timeFrameForRecurringSale}");
 
 
+                        var Sale = new Sale();
 
 
-
-
+                        // what should I call each new sale? Do the names need to be unique? How tho
                         // put all these values into a sale obejct? and then a dictionary or list?
 
 
