@@ -13,9 +13,9 @@ namespace CardboardCompanySalesPortal
 
 
             List<string> SalesEmployees = new List<string> { "Dwight Hyte", "Tim Halbert", "Phyllis Leaf" };
+            List<Sale> AllSales = new List<Sale>();
 
-
-            SalesEmployees.Add("Todd");
+            SalesEmployees.Add("Todd Spainhour");
 
 
             var selectedMenuOption = "";
@@ -75,16 +75,14 @@ namespace CardboardCompanySalesPortal
 
                             if (canConvert == true && chosenEmployeeNumberFromMenu <= SalesEmployees.Count && chosenEmployeeNumberFromMenu != 0)
                             {
-
                                 selectedSalesEmployee = SalesEmployees[chosenEmployeeNumberFromMenu - 1]; // finds string name by index location inside SalesEmployee List
-
-                                //Console.WriteLine($"You picked {selectedSalesEmployee}.\n");
                             }
                             else
                             {
                                 Console.WriteLine("Please enter a valid number from the list. \n");
                             }
                         }
+
 
                         Console.Clear();
                         Console.WriteLine($"\nSales Employee: {selectedSalesEmployee}");
@@ -104,7 +102,7 @@ namespace CardboardCompanySalesPortal
                         Console.WriteLine($"Client: {clientName}");
                         Console.WriteLine($"Client ID Number: {clientIdNumber}");
 
-
+                        
                         Console.WriteLine("\nEnter the total price of the sale.");
                         var totalSalePrice = Console.ReadLine();
                         Console.Clear();
@@ -115,7 +113,7 @@ namespace CardboardCompanySalesPortal
 
 
                         Console.WriteLine("\nHow often does this sale reoccur?");
-                        var recurringSale = Console.ReadLine();
+                        var recurringSale = Console.ReadLine();               
                         Console.Clear();
                         Console.WriteLine($"\nSales Employee: {selectedSalesEmployee}");
                         Console.WriteLine($"Client: {clientName}");
@@ -132,45 +130,17 @@ namespace CardboardCompanySalesPortal
                         Console.WriteLine($"Client ID Number: {clientIdNumber}");
                         Console.WriteLine($"Total Sale Price: {totalSalePrice}");
                         Console.WriteLine($"Recurring Sale: {recurringSale}");
-                        Console.WriteLine($"Timeframe: {timeFrameForRecurringSale}");
+                        Console.WriteLine($"Timeframe: {timeFrameForRecurringSale}\n");
 
 
-                        var Sale = new Sale();
+                        var Sale = new Sale(selectedSalesEmployee, clientName, clientIdNumber, totalSalePrice, recurringSale, timeFrameForRecurringSale);
+                        AllSales.Add(Sale);
+                        Console.WriteLine($"Your new entry has been added which brings the total number of sales to {AllSales.Count}.\n");
 
-
-                        // what should I call each new sale? Do the names need to be unique? How tho
-                        // put all these values into a sale obejct? and then a dictionary or list?
-
-
-
-
-                        /*
-                        spit back out the chosen sales employee
-
-                        Sales Agent: Dwight Hyte
-                        Client: Carol's Pen Pals
-                        ClientID: 2343
-                        Sale: $3412
-                        Recurring: Monthly
-                        Time Frame: 3 months
-                        */
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        Console.WriteLine("\nPress any key to continue...");
+                        Console.ReadKey(true);
+                        Console.Clear();
                         break;
-
-
-
 
 
                     case "2":
