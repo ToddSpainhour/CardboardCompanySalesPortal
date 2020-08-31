@@ -148,7 +148,15 @@ namespace CardboardCompanySalesPortal
                         break;
 
                     case "3":
-                        Console.WriteLine("\nYou picked Option 3 \n");
+
+                        Console.WriteLine("\nPlease enter a name to add a new sales employee. \n");
+                        var newSalesEmployee = Console.ReadLine();
+                        SalesEmployees.Add(newSalesEmployee);
+                        Console.WriteLine($"\n{newSalesEmployee} has been added to the list of sales employees.");
+
+                        Console.WriteLine("\nPress any key to continue...");
+                        Console.ReadKey(true);
+                        Console.Clear();
                         break;
 
                     case "4":
