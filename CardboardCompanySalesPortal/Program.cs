@@ -10,67 +10,26 @@ namespace CardboardCompanySalesPortal
     {
         static void Main(string[] args)
         {
+
+
             Console.WriteLine("Welcome to the Cardboard Company Sales Portal!");
+
 
 
             List<string> SalesEmployees = new List<string> { "Dwight Hyte", "Tim Halbert", "Phyllis Leaf" };
             
 
             
-
             SalesEmployees.Add("Todd Spainhour");
             
-
 
 
             List<Sale> AllSales = new List<Sale>();
            
 
 
-
-            // dummy data to live in the AllSales list
-
-            //var Scouts = new Sale()
-            //{
-            //    SelectedSalesEmployee = "Dwight Hyte",
-            //    ClientName = "Scout's Print Shop",
-            //    ClientIdNumber = "0001",
-            //    TotalSalePrice = "1000",
-            //    RecurringSale = "yes",
-            //    TimeFrameForRecurringSale = "monthly"
-            //};
-
-            //AllSales.Add(new Sale()
-            //{
-            //    SelectedSalesEmployee = "Dwight Hyte",
-            //    ClientName = "Scout's Print Shop",
-            //    ClientIdNumber = "0001",
-            //    TotalSalePrice = "1000",
-            //    RecurringSale = "yes",
-            //    TimeFrameForRecurringSale = "monthly"
-            //});
-
-         
-
-
-
-
-
-
-            //AllSales.Add(new Sale(){
-            //    SelectedSalesEmployee = "Dwight Hyte",
-            //    ClientName = "Scout's Print Shop",
-            //    ClientIdNumber = "0001",
-            //    TotalSalePrice = "1000",
-            //    RecurringSale = "yes",
-            //    TimeFrameForRecurringSale = "monthly" });
-
-
-
-
-
-
             var selectedMenuOption = "";
+
 
 
             do
@@ -224,9 +183,7 @@ namespace CardboardCompanySalesPortal
 
                     case "4":
                         Console.WriteLine("\nYou picked Option 4 \n");
-                        // the goal is to find the info on a sale by entering the 4-digit client id number
-                        // AllSales list, clientIdNumber, return all objects that match
-                        // contains?
+
 
                         // this adds some dummy sales to the AllSales list
                         if (AllSales.Count == 0)
@@ -244,27 +201,24 @@ namespace CardboardCompanySalesPortal
                         }
 
 
-                        //foreach (var item in AllSales)
-                        //{
-                        //    Console.WriteLine($"This should spit out dummy data from your AllSales: {item.ClientIdNumber} {item.ClientName}");
-                        //}
-
                         Console.WriteLine("Enter the client Id for find a sale.");
                         var chosenClientId = Console.ReadLine();
-                        Console.WriteLine($"You entered client id: {chosenClientId}");
+                        Console.WriteLine($"\nBelow you will see all sales for Client Id: {chosenClientId}\n");
 
                         foreach (var sale in AllSales)
                         {
                             if (chosenClientId == sale.ClientIdNumber)
                             {
-                                Console.WriteLine($"If you see this {chosenClientId} == sale.ClientIdNumber of {sale.ClientName}");
+                                Console.WriteLine($"Sales Employee: {sale.SelectedSalesEmployee}");
+                                Console.WriteLine($"Client Name: {sale.ClientName}");
+                                Console.WriteLine($"ClientId: {sale.ClientIdNumber}");
+                                Console.WriteLine($"Total Price: {sale.TotalSalePrice}");
+                                Console.WriteLine($"Recurring Sale: {sale.RecurringSale}");
+                                Console.WriteLine($"Timeframe: {sale.TimeFrameForRecurringSale}\n");    
                             }
                         }
 
-                        // take the chosenClientID and find all references of it in the AllSales list
-                        // maybe find their index number, save that, then print out results
-
-
+                        
                         Console.WriteLine("\nPress any key to continue...");
                         Console.ReadKey(true);
                         Console.Clear();
