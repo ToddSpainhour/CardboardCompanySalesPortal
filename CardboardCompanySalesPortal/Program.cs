@@ -228,28 +228,46 @@ namespace CardboardCompanySalesPortal
                         // AllSales list, clientIdNumber, return all objects that match
                         // contains?
 
+                        // this adds some dummy sales to the AllSales list
                         if (AllSales.Count == 0)
                         {
                             var firstSale = new Sale("Dwight Hyte", "Scout's Print Shop", "0001", "1000", "yes", "monthly");
                             var secondSale = new Sale("Dwight Hyte", "Jimbo's Print Shop", "0002", "9999", "yes", "monthly");
+                            var thirdSale = new Sale("Dwight Hyte", "Scout's Print Shop", "0001", "9999", "yes", "monthly");
 
 
                             AllSales.Add(firstSale);
                             AllSales.Add(secondSale);
+                            AllSales.Add(thirdSale);
+
 
                         }
 
 
-                        foreach (var item in AllSales)
+                        //foreach (var item in AllSales)
+                        //{
+                        //    Console.WriteLine($"This should spit out dummy data from your AllSales: {item.ClientIdNumber} {item.ClientName}");
+                        //}
+
+                        Console.WriteLine("Enter the client Id for find a sale.");
+                        var chosenClientId = Console.ReadLine();
+                        Console.WriteLine($"You entered client id: {chosenClientId}");
+
+                        foreach (var sale in AllSales)
                         {
-                            Console.WriteLine($"This should spit out dummy data from your AllSales: {item.ClientIdNumber} {item.ClientName}");
+                            if (chosenClientId == sale.ClientIdNumber)
+                            {
+                                Console.WriteLine($"If you see this {chosenClientId} == sale.ClientIdNumber of {sale.ClientName}");
+                            }
                         }
 
+                        // take the chosenClientID and find all references of it in the AllSales list
+                        // maybe find their index number, save that, then print out results
 
 
-
-
-                       
+                        Console.WriteLine("\nPress any key to continue...");
+                        Console.ReadKey(true);
+                        Console.Clear();
 
                         break;
 
