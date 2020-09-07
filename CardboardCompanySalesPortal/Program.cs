@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading;
+using CardboardCompanySalesPortal;
 
 namespace CardboardCompanySalesPortal
 {
@@ -13,9 +14,60 @@ namespace CardboardCompanySalesPortal
 
 
             List<string> SalesEmployees = new List<string> { "Dwight Hyte", "Tim Halbert", "Phyllis Leaf" };
-            List<Sale> AllSales = new List<Sale>();
+            
+
+            
 
             SalesEmployees.Add("Todd Spainhour");
+            
+
+
+
+            List<Sale> AllSales = new List<Sale>();
+           
+
+
+
+            // dummy data to live in the AllSales list
+
+            //var Scouts = new Sale()
+            //{
+            //    SelectedSalesEmployee = "Dwight Hyte",
+            //    ClientName = "Scout's Print Shop",
+            //    ClientIdNumber = "0001",
+            //    TotalSalePrice = "1000",
+            //    RecurringSale = "yes",
+            //    TimeFrameForRecurringSale = "monthly"
+            //};
+
+            //AllSales.Add(new Sale()
+            //{
+            //    SelectedSalesEmployee = "Dwight Hyte",
+            //    ClientName = "Scout's Print Shop",
+            //    ClientIdNumber = "0001",
+            //    TotalSalePrice = "1000",
+            //    RecurringSale = "yes",
+            //    TimeFrameForRecurringSale = "monthly"
+            //});
+
+         
+
+
+
+
+
+
+            //AllSales.Add(new Sale(){
+            //    SelectedSalesEmployee = "Dwight Hyte",
+            //    ClientName = "Scout's Print Shop",
+            //    ClientIdNumber = "0001",
+            //    TotalSalePrice = "1000",
+            //    RecurringSale = "yes",
+            //    TimeFrameForRecurringSale = "monthly" });
+
+
+
+
 
 
             var selectedMenuOption = "";
@@ -143,9 +195,16 @@ namespace CardboardCompanySalesPortal
                         break;
 
 
+
+
+
                     case "2":
                         Console.WriteLine("\nYou picked Option 2 \n");
                         break;
+
+
+
+
 
                     case "3":
 
@@ -159,9 +218,44 @@ namespace CardboardCompanySalesPortal
                         Console.Clear();
                         break;
 
+
+
+
+
                     case "4":
                         Console.WriteLine("\nYou picked Option 4 \n");
+                        // the goal is to find the info on a sale by entering the 4-digit client id number
+                        // AllSales list, clientIdNumber, return all objects that match
+                        // contains?
+
+                        if (AllSales.Count == 0)
+                        {
+                            var firstSale = new Sale("Dwight Hyte", "Scout's Print Shop", "0001", "1000", "yes", "monthly");
+                            var secondSale = new Sale("Dwight Hyte", "Jimbo's Print Shop", "0002", "9999", "yes", "monthly");
+
+
+                            AllSales.Add(firstSale);
+                            AllSales.Add(secondSale);
+
+                        }
+
+
+                        foreach (var item in AllSales)
+                        {
+                            Console.WriteLine($"This should spit out dummy data from your AllSales: {item.ClientIdNumber} {item.ClientName}");
+                        }
+
+
+
+
+
+                       
+
                         break;
+
+
+
+
 
                     default:
                         Console.WriteLine("\n--- Please try again. --- \n");
