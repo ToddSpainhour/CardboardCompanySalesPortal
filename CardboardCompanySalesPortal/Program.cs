@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading;
+using CardboardCompanySalesPortal;
 
 namespace CardboardCompanySalesPortal
 {
@@ -9,16 +10,26 @@ namespace CardboardCompanySalesPortal
     {
         static void Main(string[] args)
         {
+
+
             Console.WriteLine("Welcome to the Cardboard Company Sales Portal!");
 
 
-            List<string> SalesEmployees = new List<string> { "Dwight Hyte", "Tim Halbert", "Phyllis Leaf" };
-            List<Sale> AllSales = new List<Sale>();
 
+            List<string> SalesEmployees = new List<string> { "Dwight Hyte", "Tim Halbert", "Phyllis Leaf" };
+            
+
+            
             SalesEmployees.Add("Todd Spainhour");
+            
+
+
+            List<Sale> AllSales = new List<Sale>();
+           
 
 
             var selectedMenuOption = "";
+
 
 
             do
@@ -143,9 +154,16 @@ namespace CardboardCompanySalesPortal
                         break;
 
 
+
+
+
                     case "2":
                         Console.WriteLine("\nYou picked Option 2 \n");
                         break;
+
+
+
+
 
                     case "3":
 
@@ -159,9 +177,57 @@ namespace CardboardCompanySalesPortal
                         Console.Clear();
                         break;
 
+
+
+
+
                     case "4":
                         Console.WriteLine("\nYou picked Option 4 \n");
+
+
+                        // this adds some dummy sales to the AllSales list
+                        if (AllSales.Count == 0)
+                        {
+                            var firstSale = new Sale("Dwight Hyte", "Scout's Print Shop", "0001", "1000", "yes", "monthly");
+                            var secondSale = new Sale("Dwight Hyte", "Jimbo's Print Shop", "0002", "9999", "yes", "monthly");
+                            var thirdSale = new Sale("Dwight Hyte", "Scout's Print Shop", "0001", "9999", "yes", "monthly");
+
+
+                            AllSales.Add(firstSale);
+                            AllSales.Add(secondSale);
+                            AllSales.Add(thirdSale);
+
+
+                        }
+
+
+                        Console.WriteLine("Enter the client Id for find a sale.");
+                        var chosenClientId = Console.ReadLine();
+                        Console.WriteLine($"\nBelow you will see all sales for Client Id: {chosenClientId}\n");
+
+                        foreach (var sale in AllSales)
+                        {
+                            if (chosenClientId == sale.ClientIdNumber)
+                            {
+                                Console.WriteLine($"Sales Employee: {sale.SelectedSalesEmployee}");
+                                Console.WriteLine($"Client Name: {sale.ClientName}");
+                                Console.WriteLine($"ClientId: {sale.ClientIdNumber}");
+                                Console.WriteLine($"Total Price: {sale.TotalSalePrice}");
+                                Console.WriteLine($"Recurring Sale: {sale.RecurringSale}");
+                                Console.WriteLine($"Timeframe: {sale.TimeFrameForRecurringSale}\n");    
+                            }
+                        }
+
+                        
+                        Console.WriteLine("\nPress any key to continue...");
+                        Console.ReadKey(true);
+                        Console.Clear();
+
                         break;
+
+
+
+
 
                     default:
                         Console.WriteLine("\n--- Please try again. --- \n");
