@@ -159,6 +159,55 @@ namespace CardboardCompanySalesPortal
 
                     case "2":
                         Console.WriteLine("\nYou picked Option 2 \n");
+
+                        // give users list of accountants to pick from this is hard coded
+                        // go through each sales employee and list all of their clients
+                        // add the total of all the sales together
+                        string selectedAccountant = "";
+
+                        do
+                        {
+                            Console.WriteLine("Which sales accountant is this report being generated for? ");
+
+                            Console.WriteLine("1. Angela Kinsey");
+                            Console.WriteLine("2. Oscar Nunez");
+                            Console.WriteLine("3. Kevin Malone");
+
+                            var accountantMenuSelectedNumber = Console.ReadLine();
+                            switch (accountantMenuSelectedNumber)
+                            {
+                                case "1":
+                                    //var selectedAccountant = "";
+                                    //var selectedAccountant = "";
+                                    selectedAccountant = "Angela Kinsey";
+                                    Console.WriteLine($"You selected {selectedAccountant}");
+                                    break;
+
+
+                                case "2":
+                                    selectedAccountant = "Oscar Nunez";
+                                    Console.WriteLine($"You selected {selectedAccountant}");
+                                    break;
+
+                                case "3":
+                                    selectedAccountant = "Kevin Malone";
+                                    Console.WriteLine($"You selected {selectedAccountant}");
+                                    break;
+
+                                default:
+                                    Console.WriteLine("Please pick a number option from the menu.");
+                                    break;
+                            }
+
+                        } while (selectedAccountant == "");
+
+
+
+
+
+
+
+
                         break;
 
 
