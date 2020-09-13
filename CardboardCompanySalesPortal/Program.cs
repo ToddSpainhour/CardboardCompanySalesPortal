@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading;
 using CardboardCompanySalesPortal;
+using System.Linq;
 
 namespace CardboardCompanySalesPortal
 {
@@ -25,7 +26,14 @@ namespace CardboardCompanySalesPortal
 
 
             List<Sale> AllSales = new List<Sale>();
-           
+
+            var Sale1 = new Sale("Todd Spainhour", "Bobby's", "0003", "1234", "monthly", "3 months");
+            var Sale2 = new Sale("Todd Spainhour", "Cindy's", "0004", "1234", "monthly", "3 months");
+            var Sale3 = new Sale("Dwight Hyte", "Lacey's", "0005  ", "1234", "monthly", "3 months");
+
+            AllSales.Add(Sale1);
+            AllSales.Add(Sale2);
+            AllSales.Add(Sale3);
 
 
             var selectedMenuOption = "";
@@ -159,8 +167,80 @@ namespace CardboardCompanySalesPortal
 
                     case "2":
                         Console.WriteLine("\nYou picked Option 2 \n");
-                        break;
 
+                        // give users list of accountants to pick from this is hard coded
+                    
+                        string selectedAccountant = "";
+
+                        do
+                        {
+                            Console.WriteLine("Which sales accountant is this report being generated for? ");
+
+                            Console.WriteLine("1. Angela Kinsey");
+                            Console.WriteLine("2. Oscar Nunez");
+                            Console.WriteLine("3. Kevin Malone");
+
+                            var accountantMenuSelectedNumber = Console.ReadLine();
+                            switch (accountantMenuSelectedNumber)
+                            {
+                                case "1":
+                                    selectedAccountant = "Angela Kinsey";
+                                    //Console.WriteLine($"You selected {selectedAccountant}");
+                                    break;
+
+
+                                case "2":
+                                    selectedAccountant = "Oscar Nunez";
+                                    //Console.WriteLine($"You selected {selectedAccountant}");
+                                    break;
+
+                                case "3":
+                                    selectedAccountant = "Kevin Malone";
+                                    //Console.WriteLine($"You selected {selectedAccountant}");
+                                    break;
+
+                                default:
+                                    Console.WriteLine("Please pick a number option from the menu.");
+                                    break;
+                            }
+
+                        } while (selectedAccountant == "");
+
+
+
+                        Console.WriteLine("\nMonthly Sales Report");
+                        Console.WriteLine($"For: {selectedAccountant}\n");
+
+
+
+                        var salesReport =
+                            from SalesEmployee in AllSales
+                            select SalesEmployee;
+
+
+                        // don't repeat sales agents
+                        // only show clients from that sales agent
+
+                        foreach (Sale name in salesReport)
+                        {
+                            Console.WriteLine($"Sales Agent: {name.SelectedSalesEmployee}");
+                            Console.WriteLine("Clients:");
+                                
+                            
+                 
+                                foreach (Sale client in salesReport)
+                                {
+                                    Console.WriteLine(client.ClientName);
+                                }
+                                Console.WriteLine("\n");
+                        }
+
+               
+                        Console.WriteLine("\nPress any key to continue...");
+                        Console.ReadKey(true);
+                        Console.Clear();
+
+                        break;
 
 
 
